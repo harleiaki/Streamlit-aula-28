@@ -195,18 +195,22 @@ def main():
 
         st.write('## Proporção de aceite')
         # PLOTS    
+	def countPlot():
+    fig = plt.figure(figsize=(10, 4))
+    sns.countplot(x = "bank_raw_target_perc.index", data = data_frame)
+    st.pyplot(fig)
         if graph_type == 'Barras':
-            sns.barplot(x = bank_raw_target_perc.index, 
+            sns.barplot(x = 'bank_raw_target_perc.index', 
                         y = 'y',
-                        data = bank_raw_target_perc, 
+                        data = 'bank_raw_target_perc', 
                         ax = ax[0])
             ax[0].bar_label(ax[0].containers[0])
             ax[0].set_title('Dados brutos',
                             fontweight ="bold")
             
-            sns.barplot(x = bank_target_perc.index, 
+            sns.barplot(x = 'bank_target_perc.index', 
                         y = 'y', 
-                        data = bank_target_perc, 
+                        data = 'bank_target_perc', 
                         ax = ax[1])
             ax[1].bar_label(ax[1].containers[0])
             ax[1].set_title('Dados filtrados',
