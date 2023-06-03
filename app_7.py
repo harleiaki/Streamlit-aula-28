@@ -195,7 +195,7 @@ def main():
 
         st.write('## Proporção de aceite')
         # PLOTS    
-	def countPlot():
+def countPlot():
     fig = plt.figure(figsize=(10, 4))
     sns.countplot(x = "bank_raw_target_perc.index", data = data_frame)
     st.pyplot(fig)
