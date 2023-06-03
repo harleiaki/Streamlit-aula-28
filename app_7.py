@@ -5,29 +5,31 @@ import seaborn           as sns
 import matplotlib.pyplot as plt
 from PIL                 import Image
 from io                  import BytesIO
+import xlsxwriter
+
 # Set no tema do seaborn para melhorar o visual dos plots
 custom_params = {"axes.spines.right": False, "axes.spines.top": False}
 sns.set_theme(style="ticks", rc=custom_params)
 # Função para ler os dados
-@st.cache(show_spinner= True, allow_output_mutation=True)
+@st.cache_data(show_spinner= True, allow_output_mutation=True)
 def load_data(file_data):
     try:
         return pd.read_csv(file_data, sep=';')
     except:
         return pd.read_excel(file_data)
 # Função para filtrar baseado na multiseleção de categorias
-@st.cache(allow_output_mutation=True)
+@st.cache_data(allow_output_mutation=True)
 def multiselect_filter(relatorio, col, selecionados):
     if 'all' in selecionados:
         return relatorio
     else:
         return relatorio[relatorio[col].isin(selecionados)].reset_index(drop=True)
 # Função para converter o df para csv
-@st.cache
+@st.cache_data
 def convert_df(df):
     return df.to_csv(index=False).encode('utf-8')
 # Função para converter o df para excel
-@st.cache
+@st.cache_data
 def to_excel(df):
     output = BytesIO()
     writer = pd.ExcelWriter(output, engine='xlsxwriter')
