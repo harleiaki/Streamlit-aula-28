@@ -1,8 +1,6 @@
 
 # Imports
 
-python3 -m pip install --user --upgrade pip
-python3 -m pip --version
 import pandas            as pd
 import streamlit         as st
 import seaborn           as sns
