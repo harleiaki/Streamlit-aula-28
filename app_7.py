@@ -7,6 +7,10 @@ import seaborn           as sns
 import matplotlib.pyplot as plt
 from PIL                 import Image
 from io                  import BytesIO
+import altair as alt
+
+# load a simple dataset as a pandas DataFrame
+from vega_datasets import data
 
 # Set no tema do seaborn para melhorar o visual dos plots
 custom_params = {"axes.spines.right": False, "axes.spines.top": False}
