@@ -198,7 +198,7 @@ def main():
         # PLOTS    
         if graph_type == 'Barras':
             sns.barplot(x = bank_raw_target_perc.index, 
-                        #y = 'y',
+                        y = 'y',
                         data = bank_raw_target_perc, 
                         ax = ax[0])
             ax[0].bar_label(ax[0].containers[0])
@@ -206,7 +206,7 @@ def main():
                             fontweight ="bold")
             
             sns.barplot(x = bank_target_perc.index, 
-                        #y = 'y', 
+                        y = 'y', 
                         data = bank_target_perc, 
                         ax = ax[1])
             ax[1].bar_label(ax[1].containers[0])
