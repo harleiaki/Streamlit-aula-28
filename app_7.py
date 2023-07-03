@@ -166,7 +166,7 @@ def main():
         st.markdown("---")
 
         # PLOTS    
-        fig, ax = alt.subplots(1, 2, figsize = (5,3))
+        fig, ax = plt.subplots(1, 2, figsize = (5,3))
 
         bank_raw_target_perc = bank_raw.y.value_counts(normalize = True).to_frame()*100
         bank_raw_target_perc = bank_raw_target_perc.sort_index()
@@ -225,7 +225,7 @@ def main():
             ax[1].set_title('Dados filtrados',
                             fontweight ="bold")
 
-        st.pyplot(alt)
+        st.pyplot(plt)
 
 
 if __name__ == '__main__':
