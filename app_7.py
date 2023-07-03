@@ -7,10 +7,8 @@ import seaborn           as sns
 import matplotlib.pyplot as plt
 from PIL                 import Image
 from io                  import BytesIO
-import altair as alt
 
-# load a simple dataset as a pandas DataFrame
-from vega_datasets import data
+import altair.vegalite.v4 as alt
 
 # Set no tema do seaborn para melhorar o visual dos plots
 custom_params = {"axes.spines.right": False, "axes.spines.top": False}
@@ -168,7 +166,7 @@ def main():
         st.markdown("---")
 
         # PLOTS    
-        fig, ax = plt.subplots(1, 2, figsize = (5,3))
+        fig, ax = alt.subplots(1, 2, figsize = (5,3))
 
         bank_raw_target_perc = bank_raw.y.value_counts(normalize = True).to_frame()*100
         bank_raw_target_perc = bank_raw_target_perc.sort_index()
@@ -227,7 +225,7 @@ def main():
             ax[1].set_title('Dados filtrados',
                             fontweight ="bold")
 
-        st.pyplot(plt)
+        st.pyplot(alt)
 
 
 if __name__ == '__main__':
