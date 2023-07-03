@@ -14,7 +14,7 @@ sns.set_theme(style="ticks", rc=custom_params)
 
 
 # Função para ler os dados
-@st.cache_data
+@st.cache
 def load_data(file_data):
     try:
         return pd.read_csv(file_data, sep=';')
@@ -22,7 +22,7 @@ def load_data(file_data):
         return pd.read_excel(file_data)
 
 # Função para filtrar baseado na multiseleção de categorias
-@st.cache_data
+@st.cache
 def multiselect_filter(relatorio, col, selecionados):
     if 'all' in selecionados:
         return relatorio
