@@ -218,3 +218,15 @@ def main():
         else:
             bank_raw_target_perc.plot(kind='pie', autopct='%.2f', y='y', ax = ax[0])
             ax[0].set_title('Dados brutos',
+                            fontweight ="bold")
+            
+            bank_target_perc.plot(kind='pie', autopct='%.2f', y='y', ax = ax[1])
+            ax[1].set_title('Dados filtrados',
+                            fontweight ="bold")
+
+        st.pyplot(plt)
+
+
+if __name__ == '__main__':
+	main()
+                            
