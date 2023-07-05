@@ -8,8 +8,8 @@ from PIL                 import Image
 from io                  import BytesIO
 
 # Set no tema do seaborn para melhorar o visual dos plots
-custom_params = {"axes.spines.right": False, "axes.spines.top": False}
-sns.set_theme(style="ticks", rc=custom_params)
+# custom_params = {"axes.spines.right": False, "axes.spines.top": False}
+# sns.set_theme(style="ticks", rc=custom_params)
 
 
 # Função para ler os dados
@@ -55,12 +55,7 @@ def main():
 
     # Título principal da aplicação
     st.write('# Análise dos dados de Telemarketing')
-    st.write('# Análise dos dados de Telemarketing')
-    st.write('# Análise dos dados de Telemarketing')
-    st.write('# Análise dos dados de Telemarketing')
-    st.write('# Análise dos dados de Telemarketing')
-    st.write('# Análise dos dados de Telemarketing')
-    st.write('# Análise dos dados de Telemarketing')
+
     st.markdown("---")
     
     # Apresenta a imagem na barra lateral da aplicação
@@ -200,7 +195,7 @@ def main():
         st.write('## Proporção de aceite')
         # PLOTS    
         if graph_type == 'Barras':
-            sns.barplot(x = bank_raw_target_perc.index, 
+            sns.bar(x = bank_raw_target_perc.index, 
                         y = 'y',
                         data = bank_raw_target_perc, 
                         ax = ax[0])
@@ -208,7 +203,7 @@ def main():
             ax[0].set_title('Dados brutos',
                             fontweight ="bold")
             
-            sns.barplot(x = bank_target_perc.index, 
+            plt.barplot(x = bank_target_perc.index, 
                         y = 'y', 
                         data = bank_target_perc, 
                         ax = ax[1])
@@ -224,7 +219,7 @@ def main():
             ax[1].set_title('Dados filtrados',
                             fontweight ="bold")
 
-        st.pyplot(plt)
+        st.pyplot(fig)
 
 
 if __name__ == '__main__':
