@@ -208,7 +208,7 @@ def main():
             ax[0].set_title('Dados brutos',
                             fontweight ="bold")
             
-            plt.barplot(x = bank_raw_target_perc.index,
+            plt.bar(x = bank_raw_target_perc.index,
 			
                         y = 'y', 
                         data = bank_target_perc, 
