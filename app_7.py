@@ -1,6 +1,5 @@
 
 # Imports
-
 import pandas            as pd
 import streamlit         as st
 import seaborn           as sns
@@ -8,11 +7,9 @@ import matplotlib.pyplot as plt
 from PIL                 import Image
 from io                  import BytesIO
 
-import altair as alt
-
-# # Set no tema do seaborn para melhorar o visual dos plots
-# custom_params = {"axes.spines.right": False, "axes.spines.top": False}
-# plt.set_theme(style="ticks", rc=custom_params)
+# Set no tema do seaborn para melhorar o visual dos plots
+custom_params = {"axes.spines.right": False, "axes.spines.top": False}
+sns.set_theme(style="ticks", rc=custom_params)
 
 
 # Função para ler os dados
@@ -42,8 +39,7 @@ def to_excel(df):
     output = BytesIO()
     writer = pd.ExcelWriter(output, engine='xlsxwriter')
     df.to_excel(writer, index=False, sheet_name='Sheet1')
-    #writer.save()
-    writer.close()	
+    writer.save()
     processed_data = output.getvalue()
     return processed_data
 
@@ -59,7 +55,12 @@ def main():
 
     # Título principal da aplicação
     st.write('# Análise dos dados de Telemarketing')
-
+    st.write('# Análise dos dados de Telemarketing')
+    st.write('# Análise dos dados de Telemarketing')
+    st.write('# Análise dos dados de Telemarketing')
+    st.write('# Análise dos dados de Telemarketing')
+    st.write('# Análise dos dados de Telemarketing')
+    st.write('# Análise dos dados de Telemarketing')
     st.markdown("---")
     
     # Apresenta a imagem na barra lateral da aplicação
@@ -199,8 +200,7 @@ def main():
         st.write('## Proporção de aceite')
         # PLOTS    
         if graph_type == 'Barras':
-            plt.bar(x = bank_raw_target_perc.index,
-			
+            sns.barplot(x = bank_raw_target_perc.index, 
                         y = 'y',
                         data = bank_raw_target_perc, 
                         ax = ax[0])
@@ -208,8 +208,7 @@ def main():
             ax[0].set_title('Dados brutos',
                             fontweight ="bold")
             
-            plt.bar(x = bank_raw_target_perc.index,
-			
+            sns.barplot(x = bank_target_perc.index, 
                         y = 'y', 
                         data = bank_target_perc, 
                         ax = ax[1])
@@ -217,16 +216,5 @@ def main():
             ax[1].set_title('Dados filtrados',
                             fontweight ="bold")
         else:
-            bank_raw_target_perc.plot(kind='pie', autopct='%.2f', y=y, ax = ax[0])
+            bank_raw_target_perc.plot(kind='pie', autopct='%.2f', y='y', ax = ax[0])
             ax[0].set_title('Dados brutos',
-                            fontweight ="bold")
-            
-            bank_target_perc.plot(kind='pie', autopct='%.2f', y=y, ax = ax[1])
-            ax[1].set_title('Dados filtrados',
-                            fontweight ="bold")
-
-        st.pyplot(plt)
-
-
-if __name__ == '__main__':
-	main()
