@@ -12,7 +12,7 @@ import altair.vegalite.v4 as alt
 
 # Set no tema do seaborn para melhorar o visual dos plots
 custom_params = {"axes.spines.right": False, "axes.spines.top": False}
-sns.set_theme(style="ticks", rc=custom_params)
+plt.set_theme(style="ticks", rc=custom_params)
 
 
 # Função para ler os dados
