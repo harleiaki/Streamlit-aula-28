@@ -199,7 +199,7 @@ def main():
         st.write('## Proporção de aceite')
         # PLOTS    
         if graph_type == 'Barras':
-            plt.barplot(x = bank_raw_target_perc.index,
+            plt.bar(x = bank_raw_target_perc.index,
 			
                         y = 'y',
                         data = bank_raw_target_perc, 
