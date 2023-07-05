@@ -8,11 +8,12 @@ import matplotlib.pyplot as plt
 from PIL                 import Image
 from io                  import BytesIO
 
-import altair.vegalite.v4 as alt
+import altair as alt
+from vega_datasets import data
 
-# Set no tema do seaborn para melhorar o visual dos plots
-custom_params = {"axes.spines.right": False, "axes.spines.top": False}
-plt.set_theme(style="ticks", rc=custom_params)
+# # Set no tema do seaborn para melhorar o visual dos plots
+# custom_params = {"axes.spines.right": False, "axes.spines.top": False}
+# plt.set_theme(style="ticks", rc=custom_params)
 
 
 # Função para ler os dados
