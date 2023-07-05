@@ -4,6 +4,7 @@
 import pandas            as pd
 import streamlit         as st
 import seaborn           as sns
+import plotly		 as 
 import matplotlib.pyplot as plt
 from PIL                 import Image
 from io                  import BytesIO
@@ -199,7 +200,7 @@ def main():
         st.write('## Proporção de aceite')
         # PLOTS    
         if graph_type == 'Barras':
-            sns.barplot(x = bank_raw_target_perc.index,
+            plt.barplot(x = bank_raw_target_perc.index,
 			
                         y = 'y',
                         data = bank_raw_target_perc, 
@@ -208,7 +209,7 @@ def main():
             ax[0].set_title('Dados brutos',
                             fontweight ="bold")
             
-            sns.barplot(x = bank_raw_target_perc.index,
+            plt.barplot(x = bank_raw_target_perc.index,
 			
                         y = 'y', 
                         data = bank_target_perc, 
