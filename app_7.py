@@ -4,7 +4,6 @@
 import pandas            as pd
 import streamlit         as st
 import seaborn           as sns
-import plotly		 as 
 import matplotlib.pyplot as plt
 from PIL                 import Image
 from io                  import BytesIO
