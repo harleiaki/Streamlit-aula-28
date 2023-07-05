@@ -1,4 +1,3 @@
-
 # Imports
 import pandas            as pd
 import streamlit         as st
@@ -8,8 +7,8 @@ from PIL                 import Image
 from io                  import BytesIO
 
 # Set no tema do seaborn para melhorar o visual dos plots
-# custom_params = {"axes.spines.right": False, "axes.spines.top": False}
-# sns.set_theme(style="ticks", rc=custom_params)
+custom_params = {"axes.spines.right": False, "axes.spines.top": False}
+sns.set_theme(style="ticks", rc=custom_params)
 
 
 # Função para ler os dados
@@ -39,7 +38,7 @@ def to_excel(df):
     output = BytesIO()
     writer = pd.ExcelWriter(output, engine='xlsxwriter')
     df.to_excel(writer, index=False, sheet_name='Sheet1')
-    writer.close()
+    writer.save()
     processed_data = output.getvalue()
     return processed_data
 
@@ -47,15 +46,18 @@ def to_excel(df):
 # Função principal da aplicação
 def main():
     # Configuração inicial da página da aplicação
-    st.set_page_config(page_title = 'Telemarketings', \
+    st.set_page_config(page_title = 'Telemarketing analisys', \
         page_icon = 'telmarketing_icon.png',
         layout="wide",
         initial_sidebar_state='expanded'
     )
 
     # Título principal da aplicação
-    st.write('# Análise dos dados de Telemarketing')
-
+    st.write('# Telemarketing analisys')
+    st.write('# Telemarketing analisys')
+    st.write('# Telemarketing analisys')
+    st.write('# Telemarketing analisys')
+    st.write('# Telemarketing analisys')
     st.markdown("---")
     
     # Apresenta a imagem na barra lateral da aplicação
@@ -64,7 +66,7 @@ def main():
 
     # Botão para carregar arquivo na aplicação
     st.sidebar.write("## Suba o arquivo")
-    data_file_1 = st.sidebar.file_uploader("Dados de marketing", type = ['csv','xlsx'])
+    data_file_1 = st.sidebar.file_uploader("Bank marketing data", type = ['csv','xlsx'])
 
     # Verifica se há conteúdo carregado na aplicação
     if (data_file_1 is not None):
@@ -195,7 +197,7 @@ def main():
         st.write('## Proporção de aceite')
         # PLOTS    
         if graph_type == 'Barras':
-            plt.bar(x = bank_raw_target_perc.index, 
+            sns.barplot(x = bank_raw_target_perc.index, 
                         y = 'y',
                         data = bank_raw_target_perc, 
                         ax = ax[0])
@@ -203,7 +205,7 @@ def main():
             ax[0].set_title('Dados brutos',
                             fontweight ="bold")
             
-            plt.barplot(x = bank_target_perc.index, 
+            sns.barplot(x = bank_target_perc.index, 
                         y = 'y', 
                         data = bank_target_perc, 
                         ax = ax[1])
@@ -219,9 +221,8 @@ def main():
             ax[1].set_title('Dados filtrados',
                             fontweight ="bold")
 
-        st.pyplot(fig)
+        st.pyplot(plt)
 
 
 if __name__ == '__main__':
 	main()
-                            
