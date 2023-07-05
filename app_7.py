@@ -1,3 +1,4 @@
+
 # Imports
 import pandas            as pd
 import streamlit         as st
@@ -38,7 +39,7 @@ def to_excel(df):
     output = BytesIO()
     writer = pd.ExcelWriter(output, engine='xlsxwriter')
     df.to_excel(writer, index=False, sheet_name='Sheet1')
-    writer.close()
+    writer.save()
     processed_data = output.getvalue()
     return processed_data
 
@@ -46,18 +47,15 @@ def to_excel(df):
 # Função principal da aplicação
 def main():
     # Configuração inicial da página da aplicação
-    st.set_page_config(page_title = 'Telemarketing analisys', \
+    st.set_page_config(page_title = 'Telemarketings', \
         page_icon = 'telmarketing_icon.png',
         layout="wide",
         initial_sidebar_state='expanded'
     )
 
     # Título principal da aplicação
-    st.write('# Telemarketing analisys')
-    st.write('# Telemarketing analisys')
-    st.write('# Telemarketing analisys')
-    st.write('# Telemarketing analisys')
-    st.write('# Telemarketing analisys')
+    st.write('# Análise dos dados de Telemarketing')
+
     st.markdown("---")
     
     # Apresenta a imagem na barra lateral da aplicação
@@ -66,7 +64,7 @@ def main():
 
     # Botão para carregar arquivo na aplicação
     st.sidebar.write("## Suba o arquivo")
-    data_file_1 = st.sidebar.file_uploader("Bank marketing data", type = ['csv','xlsx'])
+    data_file_1 = st.sidebar.file_uploader("Dados de marketing", type = ['csv','xlsx'])
 
     # Verifica se há conteúdo carregado na aplicação
     if (data_file_1 is not None):
@@ -197,16 +195,16 @@ def main():
         st.write('## Proporção de aceite')
         # PLOTS    
         if graph_type == 'Barras':
-             sns = barplot(x = bank_raw_target_perc.index, 
-                        # y = 'y',
+            sns.barplot(x = bank_raw_target_perc.index, 
+                        y = 'y',
                         data = bank_raw_target_perc, 
                         ax = ax[0])
             ax[0].bar_label(ax[0].containers[0])
             ax[0].set_title('Dados brutos',
                             fontweight ="bold")
             
-             sns = barplot(x = bank_target_perc.index, 
-                        # y = 'y', 
+            sns.barplot(x = bank_target_perc.index, 
+                        y = 'y', 
                         data = bank_target_perc, 
                         ax = ax[1])
             ax[1].bar_label(ax[1].containers[0])
