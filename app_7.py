@@ -21,7 +21,7 @@ def load_data(file_data):
         return pd.read_excel(file_data)
 
 # Função para filtrar baseado na multiseleção de categorias
-@st.cache_data
+@st.cache(allow_output_mutation=True)
 def multiselect_filter(relatorio, col, selecionados):
     if 'all' in selecionados:
         return relatorio
