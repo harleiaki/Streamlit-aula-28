@@ -220,7 +220,3 @@ def main():
                             fontweight ="bold")
 
         st.write(fig)
-
-
-if __name__ == '__main__':
-	main()
