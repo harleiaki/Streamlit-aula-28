@@ -55,6 +55,7 @@ def main():
 
     # Título principal da aplicação
     st.write('# Análise dos dados de Telemarketing')
+
     st.markdown("---")
     
     # Apresenta a imagem na barra lateral da aplicação
@@ -120,7 +121,30 @@ def main():
             contact_list = bank.contact.unique().tolist()
             contact_list.append('all')
             contact_selected =  st.multiselect("Meio de contato", contact_list, ['all'])
+
+	    # DIA DA SEMANA
+            day_of_week_list = bank.day_of_week.unique().tolist()
+            day_of_week_list.append('all')
+            day_of_week_selected =  st.multiselect("Dia da semana", day_of_week_list, ['all'])
+
+
+                    
+            # encadeamento de métodos para filtrar a seleção
+            bank = (bank.query("age >= @idades[0] and age <= @idades[1]")
+                        .pipe(multiselect_filter, 'job', jobs_selected)
+                        .pipe(multiselect_filter, 'marital', marital_selected)
+                        .pipe(multiselect_filter, 'default', default_selected)
+                        .pipe(multiselect_filter, 'housing', housing_selected)
+                        .pipe(multiselect_filter, 'loan', loan_selected)
+                        .pipe(multiselect_filter, 'contact', contact_selected)
+                        .pipe(multiselect_filter, 'month', month_selected)
+                        .pipe(multiselect_filter, 'day_of_week', day_of_week_selected)
+            )
+
+
+            submit_button = st.form_submit_button(label='Aplicar')
         # Botões de download dos dados filtrados
+	    
         st.write('## Após os filtros')
         st.write(bank.head())
         
