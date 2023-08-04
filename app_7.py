@@ -205,7 +205,7 @@ def main():
             
             sns.barplot(x = bank_target_perc.index, 
                         y = "x", 
-                        data = x, 
+                        data = bank_target_perc, 
                         ax = ax[1])
             ax[1].bar_label(ax[1].containers[0])
             ax[1].set_title('Dados filtrados',
