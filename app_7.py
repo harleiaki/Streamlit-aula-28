@@ -197,6 +197,7 @@ def main():
         if graph_type == 'Barras':
             sns.barplot(x = bank_raw_target_perc.index, 
                         y = "y",
+			hue = "status",
                         data = bank_raw_target_perc, 
                         ax = ax[0])
             ax[0].bar_label(ax[0].containers[0])
