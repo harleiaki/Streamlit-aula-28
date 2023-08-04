@@ -14,7 +14,7 @@ Um simples resumo do uso/propósito do projeto.
 Um parágrafo aprofundando mais sobre o seu projeto e uma explicação geral do uso.
 
 ### Link para a aplicação (LIVE)
-https://harleiaki-aplicativo-ler-csv-xlsx-app-7-4m0qaf.streamlit.app/
+https://tele-xzv2.onrender.com/
 
 ## Utilização 
 
