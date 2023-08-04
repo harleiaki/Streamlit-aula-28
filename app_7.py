@@ -73,6 +73,24 @@ def main():
 
     # Verifica se há conteúdo carregado na aplicação
     if (data_file_1 is not None):
+        bank_raw = load_data(data_file_1)
+        bank = bank_raw.copy()
+
+        st.write('## Antes dos filtros')
+        st.write(bank_raw.head())
+
+        with st.sidebar.form(key='my_form'):
+
+            # SELECIONA O TIPO DE GRÁFICO
+            graph_type = st.radio('Tipo de gráfico:', ('Barras', 'Pizza'))
+        
+            # IDADES
+            max_age = int(bank.age.max())
+            min_age = int(bank.age.min())
+            idades = st.slider(label='Idade', 
+                                        min_value = min_age,
+                                        max_value = max_age, 
+                                        value = (min_age, max_age),
                                         step = 1)
 
 
@@ -108,36 +126,6 @@ def main():
             contact_list = bank.contact.unique().tolist()
             contact_list.append('all')
             contact_selected =  st.multiselect("Meio de contato", contact_list, ['all'])
-
-            
-            # MÊS DO CONTATO
-            month_list = bank.month.unique().tolist()
-            month_list.append('all')
-            month_selected =  st.multiselect("Mês do contato", month_list, ['all'])
-
-            
-            # DIA DA SEMANA
-            day_of_week_list = bank.day_of_week.unique().tolist()
-            day_of_week_list.append('all')
-            day_of_week_selected =  st.multiselect("Dia da semana", day_of_week_list, ['all'])
-
-
-                    
-            # encadeamento de métodos para filtrar a seleção
-            bank = (bank.query("age >= @idades[0] and age <= @idades[1]")
-                        .pipe(multiselect_filter, 'job', jobs_selected)
-                        .pipe(multiselect_filter, 'marital', marital_selected)
-                        .pipe(multiselect_filter, 'default', default_selected)
-                        .pipe(multiselect_filter, 'housing', housing_selected)
-                        .pipe(multiselect_filter, 'loan', loan_selected)
-                        .pipe(multiselect_filter, 'contact', contact_selected)
-                        .pipe(multiselect_filter, 'month', month_selected)
-                        .pipe(multiselect_filter, 'day_of_week', day_of_week_selected)
-            )
-
-
-            submit_button = st.form_submit_button(label='Aplicar')
-        
         # Botões de download dos dados filtrados
         st.write('## Após os filtros')
         st.write(bank.head())
@@ -211,4 +199,3 @@ def main():
 
 if __name__ == '__main__':
 	main()
-    
