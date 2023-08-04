@@ -219,7 +219,7 @@ def main():
             ax[1].set_title('Dados filtrados',
                             fontweight ="bold")
 
-        st.pyplot(plt)
+        st.write(plt)
 
 
 if __name__ == '__main__':
