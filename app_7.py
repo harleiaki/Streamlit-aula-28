@@ -39,7 +39,7 @@ def to_excel(df):
     output = BytesIO()
     writer = pd.ExcelWriter(output, engine='xlsxwriter')
     df.to_excel(writer, index=False, sheet_name='Sheet1')
-    writer.close()
+    writer.save()
     processed_data = output.getvalue()
     return processed_data
 
@@ -55,7 +55,12 @@ def main():
 
     # Título principal da aplicação
     st.write('# Análise dos dados de Telemarketing')
-
+    st.write('# Análise dos dados de Telemarketing')
+    st.write('# Análise dos dados de Telemarketing')
+    st.write('# Análise dos dados de Telemarketing')
+    st.write('# Análise dos dados de Telemarketing')
+    st.write('# Análise dos dados de Telemarketing')
+    st.write('# Análise dos dados de Telemarketing')
     st.markdown("---")
     
     # Apresenta a imagem na barra lateral da aplicação
@@ -68,24 +73,6 @@ def main():
 
     # Verifica se há conteúdo carregado na aplicação
     if (data_file_1 is not None):
-        bank_raw = load_data(data_file_1)
-        bank = bank_raw.copy()
-
-        st.write('## Antes dos filtros')
-        st.write(bank_raw.head())
-
-        with st.sidebar.form(key='my_form'):
-
-            # SELECIONA O TIPO DE GRÁFICO
-            graph_type = st.radio('Tipo de gráfico:', ('Barras', 'Pizza'))
-        
-            # IDADES
-            max_age = int(bank.age.max())
-            min_age = int(bank.age.min())
-            idades = st.slider(label='Idade', 
-                                        min_value = min_age,
-                                        max_value = max_age, 
-                                        value = (min_age, max_age),
                                         step = 1)
 
 
@@ -180,14 +167,14 @@ def main():
         col1.write('### Proporção original')
         col1.write(bank_raw_target_perc)
         col1.download_button(label='📥 Download',
-                            data=data_file_1 ,
+                            data=df_xlsx ,
                             file_name= 'bank_raw_y.xlsx')
         
         df_xlsx = to_excel(bank_target_perc)
         col2.write('### Proporção da tabela com filtros')
         col2.write(bank_target_perc)
         col2.download_button(label='📥 Download',
-                            data=data_file_1 ,
+                            data=df_xlsx ,
                             file_name= 'bank_y.xlsx')
         st.markdown("---")
     
@@ -211,15 +198,17 @@ def main():
             ax[1].set_title('Dados filtrados',
                             fontweight ="bold")
         else:
-            bank_raw_target_perc.plot(kind='pie', autopct='%.2f', y="y", ax = ax[0])
+            bank_raw_target_perc.plot(kind='pie', autopct='%.2f', y='y', ax = ax[0])
             ax[0].set_title('Dados brutos',
                             fontweight ="bold")
             
-            bank_target_perc.plot(kind='pie', autopct='%.2f', y="y", ax = ax[1])
+            bank_target_perc.plot(kind='pie', autopct='%.2f', y='y', ax = ax[1])
             ax[1].set_title('Dados filtrados',
                             fontweight ="bold")
 
-        st.write(fig)
+        st.pyplot(plt)
+
 
 if __name__ == '__main__':
 	main()
+    
