@@ -13,7 +13,7 @@ sns.set_theme(style="ticks", rc=custom_params)
 
 
 # Função para ler os dados
-@st.cache_data
+@st.cache(show_spinner= True, allow_output_mutation=True)
 def load_data(file_data):
     try:
         return pd.read_csv(file_data, sep=';')
