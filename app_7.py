@@ -195,7 +195,7 @@ def main():
         st.write('## Proporção de aceite')
         # PLOTS    
         if graph_type == 'Barras':
-            sns.barplot(x = bank_raw_target_perc.index, 
+            sns.barplot(x = bank_raw_target_perc, 
                         y = "y",
                         data = bank_raw_target_perc, 
                         ax = ax[0])
@@ -203,7 +203,7 @@ def main():
             ax[0].set_title('Dados brutos',
                             fontweight ="bold")
             
-            sns.barplot(x = bank_target_perc.index, 
+            sns.barplot(x = bank_target_perc, 
                         y = "y", 
                         data = bank_target_perc, 
                         ax = ax[1])
