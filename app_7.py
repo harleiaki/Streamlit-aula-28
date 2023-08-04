@@ -55,7 +55,6 @@ def main():
 
     # Título principal da aplicação
     st.write('# Análise dos dados de Telemarketing')
-
     st.markdown("---")
     
     # Apresenta a imagem na barra lateral da aplicação
@@ -122,7 +121,14 @@ def main():
             contact_list.append('all')
             contact_selected =  st.multiselect("Meio de contato", contact_list, ['all'])
 
-	    # DIA DA SEMANA
+            
+            # MÊS DO CONTATO
+            month_list = bank.month.unique().tolist()
+            month_list.append('all')
+            month_selected =  st.multiselect("Mês do contato", month_list, ['all'])
+
+            
+            # DIA DA SEMANA
             day_of_week_list = bank.day_of_week.unique().tolist()
             day_of_week_list.append('all')
             day_of_week_selected =  st.multiselect("Dia da semana", day_of_week_list, ['all'])
@@ -143,8 +149,8 @@ def main():
 
 
             submit_button = st.form_submit_button(label='Aplicar')
+        
         # Botões de download dos dados filtrados
-	    
         st.write('## Após os filtros')
         st.write(bank.head())
         
@@ -217,3 +223,13 @@ def main():
 
 if __name__ == '__main__':
 	main()
+    
+
+
+
+
+
+
+
+
+
