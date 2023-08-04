@@ -79,7 +79,7 @@ def main():
         st.write('## Antes dos filtros')
         st.write(bank_raw.head())
 
-        with st.sidebar.form(key='my_form'):
+        with st.form("my_form"):
 
             # SELECIONA O TIPO DE GRÁFICO
             graph_type = st.radio('Tipo de gráfico:', ('Barras', 'Pizza'))
