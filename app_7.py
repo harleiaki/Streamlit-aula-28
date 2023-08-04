@@ -180,14 +180,14 @@ def main():
         col1.write('### Proporção original')
         col1.write(bank_raw_target_perc)
         col1.download_button(label='📥 Download',
-                            data=df_xlsx ,
+                            data=data_file_1 ,
                             file_name= 'bank_raw_y.xlsx')
         
         df_xlsx = to_excel(bank_target_perc)
         col2.write('### Proporção da tabela com filtros')
         col2.write(bank_target_perc)
         col2.download_button(label='📥 Download',
-                            data=df_xlsx ,
+                            data=data_file_1 ,
                             file_name= 'bank_y.xlsx')
         st.markdown("---")
     
@@ -197,7 +197,7 @@ def main():
         if graph_type == 'Barras':
             sns.barplot(x = bank_raw_target_perc.index, 
                         y = "x",
-                        data = df_xlsx, 
+                        data = x, 
                         ax = ax[0])
             ax[0].bar_label(ax[0].containers[0])
             ax[0].set_title('Dados brutos',
@@ -205,7 +205,7 @@ def main():
             
             sns.barplot(x = bank_target_perc.index, 
                         y = "x", 
-                        data = df_xlsx, 
+                        data = x, 
                         ax = ax[1])
             ax[1].bar_label(ax[1].containers[0])
             ax[1].set_title('Dados filtrados',
