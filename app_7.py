@@ -197,7 +197,7 @@ def main():
         if graph_type == 'Barras':
             sns.barplot(x = bank_raw_target_perc.index, 
                         y = "y",
-                        data = bank_target_perc, 
+                        data = bank_raw_target_perc, 
                         ax = ax[0])
             ax[0].bar_label(ax[0].containers[0])
             ax[0].set_title('Dados brutos',
